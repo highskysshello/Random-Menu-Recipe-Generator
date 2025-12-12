@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오늘의 메뉴 레시피 추천</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="recipe-header">
+            <h1 id="recipe-title"></h1>
+            <nav class="tabs-nav">
+                <ul>
+                    <li class="tab-item active"><button data-tab="info">정보</button></li>
+                    <li class="tab-item"><button data-tab="nutrition">영양성분</button></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="recipe-main">
+            <section id="info" class="tab-content active">
+                <div class="content-group summary-section">
+                    <div class="summary-details">
+                        <p class="detail-item">
+                            <span class="detail-label">조리법</span><span class="detail-value" id="recipe-method"></span>
+                        </p>
+                        <p class="detail-item">
+                            <span class="detail-label">중량</span><span class="detail-value" id="recipe-weight"></span> (1인분 기준)
+                        </p>
+                        <p class="detail-item ingredient-text">
+                            <span class="detail-label">재료</span><span class="detail-value" id="recipe-ingredients"></span>
+                        </p>
+                    </div>
+                    <figure class="main-image-container">
+                        <img id="main-dish-image" src="" alt="요리 완성 사진" class="main-dish-image">
+                    </figure>
+                </div>
+            </section>
+
+            <section id="nutrition" class="tab-content">
+                <div class="nutrition-content-group">
+                    <div class="nutrition-details">
+                        <div class="nutrition-header">
+                            <span class="col-item">영양성분</span>
+                            <span class="col-item right-align">1일 영양성분 기준치 비율</span>
+                        </div>
+                        
+                        <div id="nutrition-data-list">
+                            <p class="loading-text">영양성분 정보를 불러오는 중...</p>
+                        </div>
+                    </div>
+                    
+                    <figure class="nutrition-image-container">
+                        <img id="nutrition-tab-image" src="nutrition_dish_placeholder.jpg" alt="영양성분 탭 이미지" class="main-dish-image">
+                    </figure>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="instructions-section">
+                <h2>조리 과정</h2>
+                <div class="step-carousel">
+                    <div id="carousel-container">
+                        <p id="step-loading-text" class="loading-text">조리 과정을 불러오는 중...</p>
+                    </div>
+                </div>
+                <p id="step-description" class="step-text"></p>
+            </section>
+        </main>
+
+        <hr>
+
+        <section class="other-menu-section">
+            <div class="other-menu-header">
+                <h2>이런 메뉴는 어때요?</h2>
+                <button id="refresh-other-menus" class="refresh-btn">다른 메뉴 새로고침</button>
+            </div>
+            
+            <div class="other-menu-list-wrapper">
+                <div id="other-menu-list" class="other-menu-list">
+                    <p class="loading-text">다른 메뉴 목록을 불러오는 중...</p>
+                </div>
+                
+                <div id="other-menu-loading-overlay" class="loading-overlay">
+                    <p class="loading-message">메뉴 불러오는 중</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

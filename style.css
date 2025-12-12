@@ -1,0 +1,381 @@
+/* 기본 초기화 */
+body {
+    font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px; /* 이미지와 비슷한 둥근 모서리 */
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+hr {
+    border: 0;
+    border-top: 10px solid #f0f0f0; /* 두꺼운 구분선 */
+    margin: 30px 0;
+}
+
+/* --- 탭 메뉴 스타일 --- */
+.tabs-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-item button {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #777;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.tab-item.active button {
+    color: #333;
+    border-bottom: 3px solid #FF8C00; /* 활성화 색상 */
+}
+
+/* 탭 콘텐츠 숨기기/보이기 */
+.tab-content {
+    display: none;
+    padding-top: 20px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* --- 정보 섹션 (요약 + 이미지) --- */
+.summary-section {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.summary-details {
+    flex-grow: 1;
+}
+
+.detail-item {
+    margin-bottom: 8px;
+    /* 레이블과 값을 인라인으로 정렬 */
+    display: flex;
+    align-items: flex-start;
+}
+
+/* 레이블 (조리법, 중량, 재료) 스타일 */
+.detail-label {
+    /* "조리법 " 등 7칸의 너비를 맞추기 위해 고정 폭 설정 (약 7자 너비) */
+    display: inline-block;
+    width: 80px; 
+    font-weight: bold;
+    color: #333;
+    /* 레이블과 값 사이 간격 추가 */
+    margin-right: 10px; 
+    /* 콜론을 제거했으므로 공백으로 대체 */
+}
+
+/* 값 (내용) 스타일 */
+.detail-value {
+    flex-grow: 1; /* 나머지 공간을 모두 차지하도록 */
+    line-height: 1.6;
+}
+
+
+.main-image-container {
+    flex-shrink: 0;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.main-dish-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ingredient-text {
+    /* 재료 텍스트는 줄바꿈이 될 수 있도록 상단 마진만 조정 */
+    margin-top: 15px; 
+}
+
+/* --- 영양성분 섹션 스타일 --- */
+.nutrition-content-group {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.nutrition-details {
+    flex-grow: 1;
+}
+
+.nutrition-header, .nutrition-item {
+    display: grid;
+    /* 레이블:값:비율 의 세 열을 설정합니다. (값과 비율이 한 셀에 표시되도록 조정) */
+    grid-template-columns: 100px 1fr; 
+    padding: 10px 0;
+    align-items: center;
+}
+
+.nutrition-header {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    border-bottom: 2px solid #333; /* 이미지와 유사한 두꺼운 줄 */
+    margin-bottom: 10px;
+}
+
+/* 영양성분 항목의 레이블 */
+.nutrition-header .col-item:first-child {
+    grid-column: 1;
+}
+
+/* 값과 비율이 표시될 오른쪽 영역 */
+.nutrition-header .col-item.right-align {
+    text-align: right;
+    grid-column: 2;
+}
+
+.nutrition-item {
+    font-size: 18px; /* 글자 크기 키우기 */
+    color: #333;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.nutrition-item .label {
+    font-weight: normal;
+    color: #555;
+}
+
+.nutrition-item .value {
+    font-weight: bold;
+    text-align: left;
+    display: inline-block;
+    width: 100px; /* 값의 공간을 확보 */
+}
+
+.nutrition-item .percent {
+    float: right; /* 오른쪽으로 붙입니다 */
+    color: #FF8C00; /* 주황색 포인트 */
+    font-weight: bold;
+}
+
+.loading-text, .error-text {
+    text-align: center;
+    padding: 50px 0;
+    color: #999;
+}
+
+
+/* --- 조리 과정 섹션 (슬라이더) --- */
+.instructions-section h2 {
+    text-align: center;
+}
+
+.step-carousel {
+    position: relative;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.step-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 66.66%; /* 3:2 비율 유지 */
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.step-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
+.step-image.active {
+    opacity: 1;
+}
+
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.carousel-dots {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #FF8C00;
+}
+
+.step-text {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+/* --- 다른 메뉴 섹션 --- */
+.other-menu-section h2 {
+    color: #555;
+    font-size: 22px;
+}
+
+/* 다른 메뉴 헤더 (제목 + 버튼) */
+.other-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* 새로고침 버튼 스타일 */
+.refresh-btn {
+    background-color: #FF8C00;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.refresh-btn:hover:not(:disabled) {
+    background-color: #e07b00;
+}
+
+/* 새로고침 중 버튼 비활성화 시 스타일 */
+.refresh-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+/* '다른 메뉴' 로딩 오버레이를 위한 Wrapper */
+.other-menu-list-wrapper {
+    position: relative; /* 오버레이의 기준점 */
+}
+
+.other-menu-list {
+    display: flex;
+    overflow-x: auto; 
+    gap: 15px;
+    padding: 10px 0;
+}
+
+.menu-card {
+    flex-shrink: 0; 
+    width: 120px;
+    text-align: center;
+    cursor: pointer;
+    /* 추가: 카드 클릭 시 시각적 피드백 */
+    transition: transform 0.2s;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+}
+
+.menu-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.menu-card p {
+    font-size: 0.9em;
+    margin-top: 5px;
+    white-space: nowrap; /* 제목이 잘리지 않도록 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- 로딩 오버레이 스타일 --- */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.95); /* 흰색 배경에 약간의 투명도 */
+    display: none; /* 초기에는 숨김 */
+    justify-content: center;
+    align-items: center;
+    z-index: 20; /* 다른 메뉴 위에 표시 */
+    border-radius: 5px;
+}
+
+.loading-overlay.active {
+    display: flex;
+}
+
+.loading-message {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #FF8C00; /* 주황색 포인트 */
+    /* 로딩 스피너를 추가할 경우를 대비하여 애니메이션 효과를 줄 수 있습니다. */
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.7; }
+    100% { opacity: 1.0; }
+}
